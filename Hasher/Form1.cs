@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
@@ -75,6 +69,7 @@ namespace Hasher
         private void BtnStart_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = false;
+            fileCount = 0;
             backgroundWorker.RunWorkerAsync();
         }
 
@@ -88,6 +83,7 @@ namespace Hasher
             {
                 StreamWriter file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "_hlist", false);
                 RecursiveHash(AppDomain.CurrentDomain.BaseDirectory, file);
+                file.WriteLine(String.Format("totalfiles={0}", fileCount));
                 file.Close();
             }
             catch (Exception ex)
@@ -98,9 +94,6 @@ namespace Hasher
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            StreamWriter file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "_hlist", true);
-            file.WriteLine(String.Format("totalfiles={0}", fileCount));
-            file.Close();
             MessageBox.Show("HASHER COMPLETO!");
             btnStart.Enabled = true;
         }

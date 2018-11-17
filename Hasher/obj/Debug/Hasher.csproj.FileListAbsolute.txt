@@ -11,7 +11,6 @@ c:\users\pedro\source\repos\Hasher\Hasher\obj\Debug\Hasher.pdb
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\bin\Debug\Hasher.exe.config
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\bin\Debug\Hasher.exe
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\bin\Debug\Hasher.pdb
-C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\obj\Debug\Hasher.csprojResolveAssemblyReference.cache
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\obj\Debug\Hasher.Form1.resources
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\obj\Debug\Hasher.Properties.Resources.resources
 C:\Users\pedro\OneDrive\Documentos\GitHub\Repositorios\HASHER-FOR-LAUNCHER-Csharp\Hasher\obj\Debug\Hasher.csproj.GenerateResource.Cache
