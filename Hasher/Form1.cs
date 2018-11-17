@@ -14,6 +14,9 @@ namespace Hasher
 {
     public partial class Form1 : Form
     {
+
+        int fileCount;
+
         public Form1()
         {
             InitializeComponent();
@@ -49,9 +52,10 @@ namespace Hasher
                     string[] files = Directory.GetFiles(directory);
                     foreach (string hFile in files)
                     {
-                        if (hFile.Contains("_hlist") || hFile.Contains("Hasher.exe")) { continue; }
+                        if (hFile.Contains("_hlist") || hFile.Contains("Hasher.exe") || hFile.Contains("_version")) { continue; }
                         string hash = CalculateMD5(hFile);
-                        fileToWrite.WriteLine(String.Format("file=\"{0}\", hash=\"{1}\"", more + hFile.Replace(directory, ""), hash));
+                        fileCount += 1;
+                        fileToWrite.WriteLine(String.Format("file=\"{0}\", hash=\"{1}\";", more + hFile.Replace(directory, ""), hash));
                     }
                     string[] dirs = Directory.GetDirectories(directory);
 
@@ -94,6 +98,9 @@ namespace Hasher
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            StreamWriter file = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "_hlist", true);
+            file.WriteLine(String.Format("totalfiles={0}", fileCount));
+            file.Close();
             MessageBox.Show("HASHER COMPLETO!");
             btnStart.Enabled = true;
         }
