@@ -9,6 +9,8 @@ namespace Hasher
     public partial class Form1 : Form
     {
 
+        string[] skipFiles = { "Hasher.exe", "_hlist", "_version", "_links", "README.md" };
+
         int fileCount;
 
         public Form1()
@@ -42,11 +44,22 @@ namespace Hasher
             try
             {
                 if (Directory.Exists(directory))
-                {                    
+                {
                     string[] files = Directory.GetFiles(directory);
                     foreach (string hFile in files)
                     {
-                        if (hFile.Contains("_hlist") || hFile.Contains("Hasher.exe") || hFile.Contains("_version")) { continue; }
+                        bool allowHash = true;
+                        if (hFile.Replace(directory, "").Replace("\\", "").StartsWith(".")) { MessageBox.Show(hFile); continue; }
+                        foreach (string notDownload in skipFiles)
+                        {
+                            if (hFile.Replace(directory, "").Replace("\\", "").Contains(notDownload))
+                            {
+                                MessageBox.Show(hFile);
+                                allowHash = false;
+                                break;
+                            }
+                        }
+                        if (!allowHash) { continue; }
                         string hash = CalculateMD5(hFile);
                         fileCount += 1;
                         fileToWrite.WriteLine(String.Format("file=\"{0}\", hash=\"{1}\";", more + hFile.Replace(directory, ""), hash));
